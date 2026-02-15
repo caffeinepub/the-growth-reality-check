@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        /* Bold electric blue and vibrant orange palette */
+        --background: 0.98 0.01 240;
+        --foreground: 0.15 0.04 260;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0.04 260;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0.04 260;
+        /* Electric blue primary */
+        --primary: 0.55 0.25 260;
+        --primary-foreground: 0.98 0 0;
+        /* Vibrant orange secondary */
+        --secondary: 0.70 0.20 40;
+        --secondary-foreground: 0.98 0 0;
+        --muted: 0.94 0.02 250;
+        --muted-foreground: 0.50 0.04 260;
+        /* Bright orange accent */
+        --accent: 0.75 0.22 35;
+        --accent-foreground: 0.98 0 0;
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0 0;
+        /* Vibrant green for Yes answers */
+        --success: 0.65 0.20 150;
+        --success-foreground: 0.98 0 0;
+        /* Bold red for No answers */
+        --warning: 0.58 0.24 20;
+        --warning-foreground: 0.98 0 0;
+        --border: 0.88 0.03 250;
+        --input: 0.92 0.02 250;
+        --ring: 0.55 0.25 260;
+        --chart-1: 0.65 0.20 40;
+        --chart-2: 0.60 0.15 200;
+        --chart-3: 0.70 0.18 120;
+        --chart-4: 0.55 0.22 25;
+        --chart-5: 0.75 0.15 280;
+        --sidebar: 0.98 0 0;
+        --sidebar-foreground: 0.15 0.04 260;
+        --sidebar-primary: 0.55 0.25 260;
+        --sidebar-primary-foreground: 0.98 0 0;
+        --sidebar-accent: 0.94 0.02 250;
+        --sidebar-accent-foreground: 0.25 0.04 260;
+        --sidebar-border: 0.88 0.03 250;
+        --sidebar-ring: 0.70 0.02 260;
+    }
+
+    .dark {
+        --background: 0.12 0.04 260;
+        --foreground: 0.95 0.02 240;
+        --card: 0.18 0.05 260;
+        --card-foreground: 0.95 0.02 240;
+        --popover: 0.15 0.05 260;
+        --popover-foreground: 0.95 0.02 240;
+        /* Brighter blue for dark mode */
+        --primary: 0.65 0.28 260;
+        --primary-foreground: 0.12 0.04 260;
+        --secondary: 0.75 0.22 40;
+        --secondary-foreground: 0.12 0.04 260;
+        --muted: 0.25 0.04 260;
+        --muted-foreground: 0.65 0.03 240;
+        --accent: 0.70 0.20 35;
+        --accent-foreground: 0.12 0.04 260;
+        --destructive: 0.60 0.24 25;
+        --destructive-foreground: 0.12 0.04 260;
+        /* Bright green for dark mode */
+        --success: 0.70 0.22 150;
+        --success-foreground: 0.12 0.04 260;
+        /* Bright red for dark mode */
+        --warning: 0.65 0.26 20;
+        --warning-foreground: 0.12 0.04 260;
+        --border: 0.30 0.05 260;
+        --input: 0.25 0.05 260;
+        --ring: 0.65 0.28 260;
+        --chart-1: 0.55 0.22 340;
+        --chart-2: 0.70 0.18 180;
+        --chart-3: 0.75 0.20 80;
+        --chart-4: 0.65 0.25 300;
+        --chart-5: 0.68 0.22 30;
+        --sidebar: 0.18 0.05 260;
+        --sidebar-foreground: 0.95 0.02 240;
+        --sidebar-primary: 0.65 0.28 260;
+        --sidebar-primary-foreground: 0.12 0.04 260;
+        --sidebar-accent: 0.25 0.04 260;
+        --sidebar-accent-foreground: 0.95 0.02 240;
+        --sidebar-border: 0.30 0.05 260;
+        --sidebar-ring: 0.45 0.04 260;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    html {
+        background: oklch(var(--background));
+    }
+    
+    body {
+        @apply text-foreground;
+        background: oklch(var(--background));
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+@layer utilities {
+    /* Animation utilities */
+    .animate-in {
+        animation-fill-mode: both;
+    }
+    
+    .fade-in {
+        animation-name: fadeIn;
+    }
+    
+    .slide-in-from-bottom-4 {
+        animation-name: slideInFromBottom;
+    }
+    
+    .slide-in-from-left {
+        animation-name: slideInFromLeft;
+    }
+    
+    .slide-in-from-right {
+        animation-name: slideInFromRight;
+    }
+    
+    .scale-in {
+        animation-name: scaleIn;
+    }
+    
+    .duration-300 {
+        animation-duration: 300ms;
+    }
+    
+    .duration-500 {
+        animation-duration: 500ms;
+    }
+    
+    .duration-700 {
+        animation-duration: 700ms;
+    }
+    
+    .duration-1000 {
+        animation-duration: 1000ms;
+    }
+    
+    /* Hero utilities */
+    .hero-gradient {
+        background: linear-gradient(135deg, oklch(var(--primary)) 0%, oklch(var(--accent)) 100%);
+    }
+    
+    .hero-mesh-bg {
+        background-image: url('/assets/generated/hero-mesh-bg.dim_2400x1350.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    .geo-pattern-bg {
+        background-image: url('/assets/generated/geo-pattern.dim_2000x2000.png');
+        background-size: 400px 400px;
+        background-repeat: repeat;
+        opacity: 0.05;
+    }
+    
+    .corner-ornament {
+        background-image: url('/assets/generated/corner-ornaments.dim_1600x1600.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    
+    /* Glow effects */
+    .glow-primary {
+        box-shadow: 0 0 20px oklch(var(--primary) / 0.3), 0 0 40px oklch(var(--primary) / 0.1);
+    }
+    
+    .glow-accent {
+        box-shadow: 0 0 20px oklch(var(--accent) / 0.3), 0 0 40px oklch(var(--accent) / 0.1);
+    }
+    
+    .glow-success {
+        box-shadow: 0 0 20px oklch(var(--success) / 0.3), 0 0 40px oklch(var(--success) / 0.1);
+    }
+    
+    /* Hover effects */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px oklch(var(--foreground) / 0.15);
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+        background: linear-gradient(135deg, oklch(var(--primary)) 0%, oklch(var(--accent)) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Pulse animation for CTAs */
+    .pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px oklch(var(--primary) / 0.4), 0 0 40px oklch(var(--primary) / 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px oklch(var(--primary) / 0.6), 0 0 60px oklch(var(--primary) / 0.3);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .pulse-glow {
+        animation: none;
+    }
+    
+    .hover-lift:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Open WhatsApp with pre-filled Contact Us lead details",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "On Contact Us submit, build a wa.me URL to owner number with a URL-encoded message containing Full Name, Phone Number, and optional City, and open WhatsApp without using any backend/WhatsApp API.",
+      "acceptanceCriteria": [
+        "On the Contact Us page, submitting the form with valid inputs opens WhatsApp using a link in the format https://wa.me/918829921156?text=<urlencoded_message>.",
+        "The pre-filled WhatsApp message includes at minimum: Full Name, Phone Number, and City (if provided).",
+        "The message is URL-encoded so spaces/newlines/special characters do not break the link.",
+        "The submit flow does not attempt to send any message via backend or any WhatsApp API; it only opens the WhatsApp chat with a pre-filled message."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/whatsapp.ts",
+          "operation": "create",
+          "description": "Create a small WhatsApp helper that (1) formats the lead details message with line breaks, (2) URL-encodes it, and (3) returns the final https://wa.me/918829921156?text=... URL for use by the Contact Us submit flow."
+        },
+        {
+          "path": "frontend/src/components/ContactUsPage.tsx",
+          "operation": "modify",
+          "description": "Replace the current in-app-only confirmation submit behavior with: build the WhatsApp wa.me link from validated formData (Full Name, Phone Number, optional City) via the new helper, URL-encode the message, and attempt to open WhatsApp (no backend calls, no WhatsApp APIs). Keep using existing shadcn-ui Button/Input/Card components for the updated UI. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Improve Contact Us submit UX to initiate WhatsApp navigation on successful validation and provide a visible fallback link/button with guidance when automatic opening is blocked.",
+      "acceptanceCriteria": [
+        "With valid form data, the primary CTA initiates navigation to WhatsApp (new tab/window or same tab is acceptable).",
+        "If the browser blocks the automatic open, the UI presents a visible fallback action (e.g., a link/button) that opens the same wa.me URL.",
+        "The form validation behavior remains: full name required; phone number required and validated; city optional."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ContactUsPage.tsx",
+          "operation": "modify",
+          "description": "Add state to track the generated WhatsApp URL and whether auto-open likely failed (e.g., window.open returned null/undefined). After successful validation, attempt to open WhatsApp; then render an on-page status panel that (a) confirms the attempt, (b) shows a clear message if blocked (popup blocked) and instructions, and (c) displays a prominent fallback link/button that navigates to the same wa.me URL. Ensure validation rules remain unchanged. Keep using existing shadcn-ui components for the fallback action UI. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "App flow includes a Contact/Submit action that should open WhatsApp to send the user’s submitted form info to the owner’s number via a pre-filled message (wa.me link).",
+  "architectural_notes": [
+    "WhatsApp integration will be implemented by opening a wa.me link with a pre-filled message; the app cannot auto-send WhatsApp messages directly."
+  ],
+  "known_issues": [
+    "Contact/Submit button not working properly (needs to be fixed as part of WhatsApp submit flow)."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-update-the-contact-us-form-submit-flow-so-that-when-the-user-presses-the-submit-register-button-the-app-opens-a-whatsapp-chat-to-the-owner-number-918829921156-using-a-wa-me-link-with-a-pre-filled-message-containing-the-submitted-form-details-full-name-phone-number-and-city",
+      "title": "Update the Contact Us form submit flow so that when the user presses the Submit/Register button, the app opens a WhatsApp chat to the owner number 918829921156 using a wa.me link with a pre-filled message containing the submitted form details (full name, phone number, and city).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-contact-form-ux-so-it-no-longer-only-shows-an-in-app-received-your-information-confirmation-without-sending-opening-whatsapp-instead-after-a-successful-validation-it-must-initiate-the-whatsapp-open-action-and-provide-a-clear-on-page-indication-if-the-whatsapp-window-tab-could-not-be-opened-e-g-popup-blocked-with-guidance-to-use-the-displayed-link-button-to-open-whatsapp-manually",
+      "title": "Fix the Contact form UX so it no longer only shows an in-app 'received your information' confirmation without sending/opening WhatsApp; instead, after a successful validation, it must initiate the WhatsApp open action and provide a clear on-page indication if the WhatsApp window/tab could not be opened (e.g., popup blocked) with guidance to use the displayed link/button to open WhatsApp manually.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "On form Submit, open WhatsApp chat to owner number with all form data pre-filled in the message (wa.me link).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Fix Contact form submit to open WhatsApp chat with pre-filled lead details",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

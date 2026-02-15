@@ -1,0 +1,42 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-contact-us-form-submit-flow-so-that-when-the-user-presses-the-submit-register-button-the-app-opens-a-whatsapp-chat-to-the-owner-number-918829921156-using-a-wa-me-link-with-a-pre-filled-message-containing-the-submitted-form-details-full-name-phone-number-and-city",
+      "featureTitle": "Update the Contact Us form submit flow so that when the user presses the Submit/Register button, the app opens a WhatsApp chat to the owner number 918829921156 using a wa.me link with a pre-filled message containing the submitted form details (full name, phone number, and city).",
+      "files": [
+        "frontend/src/components/ContactUsPage.tsx",
+        "frontend/src/lib/whatsapp.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-fix-the-contact-form-ux-so-it-no-longer-only-shows-an-in-app-received-your-information-confirmation-without-sending-opening-whatsapp-instead-after-a-successful-validation-it-must-initiate-the-whatsapp-open-action-and-provide-a-clear-on-page-indication-if-the-whatsapp-window-tab-could-not-be-opened-e-g-popup-blocked-with-guidance-to-use-the-displayed-link-button-to-open-whatsapp-manually",
+      "featureTitle": "Fix the Contact form UX so it no longer only shows an in-app 'received your information' confirmation without sending/opening WhatsApp; instead, after a successful validation, it must initiate the WhatsApp open action and provide a clear on-page indication if the WhatsApp window/tab could not be opened (e.g., popup blocked) with guidance to use the displayed link/button to open WhatsApp manually.",
+      "files": [
+        "frontend/src/components/ContactUsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
